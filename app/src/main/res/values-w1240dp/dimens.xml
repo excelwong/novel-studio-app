@@ -1,0 +1,9 @@
+<resources>
+    <!-- vivo X Fold3 Pro unfolded (2480x2200): roomier paddings & larger touch targets -->
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="form_label_w">110dp</dimen>
+    <dimen name="text_body">15sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="btn_height">48dp</dimen>
+    <dimen name="list_item_pad">14dp</dimen>
+</resources>

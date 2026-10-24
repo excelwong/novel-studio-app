@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.NovelStudio" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>
+        <!-- 输入框提示文字：原主题默认浅灰看不清，统一改深蓝 -->
+        <item name="android:textColorHint">@color/gray_hint</item>
+        <!-- 输入框/编辑框正文文字（含 AI 生成正文）：原默认偏灰，统一改深蓝 -->
+        <item name="android:editTextColor">@color/gray_hint</item>
+    </style>
+</resources>

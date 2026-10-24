@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/screen_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="规划章数：" />
+
+        <EditText
+            android:id="@+id/et_n_chapters"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="10"
+            android:singleLine="true" />
+
+        <CheckBox
+            android:id="@+id/cb_overwrite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="覆盖已有摘要" />
+
+        <Button
+            android:id="@+id/btn_gen_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI 批量生成全部章节摘要" />
+
+        <Button
+            android:id="@+id/btn_save_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="保存本章摘要" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="章节：" />
+
+        <Spinner
+            android:id="@+id/spin_sum"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_gen_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新生成本章" />
+
+        <EditText
+            android:id="@+id/et_revise"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:gravity="top"
+            android:hint="AI 修订指令（如：把冲突加强，结尾钩子更狠）"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:minLines="2" />
+
+        <Button
+            android:id="@+id/btn_revise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI 修订" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_summary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:padding="6dp"
+        android:textSize="@dimen/text_body" />
+</LinearLayout>

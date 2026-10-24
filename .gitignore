@@ -1,0 +1,15 @@
+# 签名密钥与本地配置（严禁入库）
+release.keystore
+release-signing.properties
+local.properties
+
+# 构建产物
+build/
+.gradle/
+*.log
+app/build/
+
+# IDE
+.idea/
+*.iml
+.DS_Store

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/screen_padding">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@color/panel_bg"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="范文列表（txt）"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_samples"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_add_sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加范文…" />
+
+        <Button
+            android:id="@+id/btn_del_sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除所选范文" />
+
+        <Button
+            android:id="@+id/btn_extract_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="AI 提炼文风特征" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_weight="7"
+        android:background="@color/panel_bg"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文风特征说明（AI 提炼后可人工修改，正文生成时将严格模仿）"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:padding="6dp"
+            android:textSize="@dimen/text_body" />
+
+        <Button
+            android:id="@+id/btn_save_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="保存文风特征" />
+    </LinearLayout>
+</LinearLayout>

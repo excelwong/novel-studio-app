@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="44dp"
+    android:paddingHorizontal="@dimen/list_item_pad"
+    android:paddingVertical="@dimen/list_item_pad"
+    android:textColor="@color/black"
+    android:textSize="@dimen/text_body" />

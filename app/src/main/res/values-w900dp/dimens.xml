@@ -1,0 +1,9 @@
+<resources>
+    <!-- Unfolded large-screen fallback (e.g. vivo X Fold3 Pro unfolded): roomier paddings -->
+    <dimen name="screen_padding">14dp</dimen>
+    <dimen name="form_label_w">104dp</dimen>
+    <dimen name="text_body">15sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="btn_height">48dp</dimen>
+    <dimen name="list_item_pad">13dp</dimen>
+</resources>

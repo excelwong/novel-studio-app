@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">小说连载工坊</string>
+
+    <string name="tab_settings">1.设置与项目</string>
+    <string name="tab_style">2.范文提炼文风</string>
+    <string name="tab_deconstruct">2.5 范文拆解仿写</string>
+    <string name="tab_characters">3.人物档案</string>
+    <string name="tab_relationships">4.人物关系</string>
+    <string name="tab_outline">5.剧情大纲</string>
+    <string name="tab_summary">6.章节摘要</string>
+    <string name="tab_draft">7.章节正文</string>
+    <string name="status_ready">就绪。请先在「1.设置与项目」新建或打开项目。</string>
+</resources>
