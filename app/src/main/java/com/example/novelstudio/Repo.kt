@@ -667,4 +667,49 @@ object Repo {
 
     fun sumContext(): String =
         "【文风特征】\n${styleText()}\n\n【人物档案】\n${charsText()}\n\n【人物关系】\n${relText()}\n\n【剧情大纲】\n${outlineText()}"
+
+    // ---------------- 第 6 页：本章摘要提示词（透明化，可编辑） ----------------
+
+    private fun outlineChapter(n: Int): Rec? =
+        Store.outline.firstOrNull { (it["章节"] ?: "").trim() == n.toString() }
+
+    private fun outlineLine(r: Rec?): String? {
+        if (r == null) return null
+        return "第${r["章节"]}章｜${r["标题"]}｜${r["时间"]}｜${r["人物"]}｜${r["地点"]}｜${r["事件"]}｜${r["冲突/看点"]}｜${r["结尾钩子"]}"
+    }
+
+    /** 生成「第 n 章摘要」的提示词：透明展示如何从上一环节的剧情大纲生成本章摘要，
+     *  在第 6 页提示词编辑框中展示，用户可修改后直接执行。 */
+    fun summaryPrompt(n: Int): String {
+        val cur = outlineChapter(n)
+        // 本章出场人物：大纲「人物」字段与人物档案求交，只带本章相关档案/关系
+        val people = (cur?.get("人物") ?: "")
+            .split(Regex("[、，,;；/\\s]+")).map { it.trim() }.filter { it.isNotEmpty() }
+        val charNames = Store.chars.map { (it["姓名"] ?: "").trim() }.filter { it.isNotEmpty() }.toSet()
+        val hitNames = people.filter { it in charNames }.toSet()
+        val charsMd = if (hitNames.isNotEmpty()) charsText(hitNames) else charsText()
+        val relMd = if (hitNames.isNotEmpty()) relText(hitNames) else relText()
+        val curLine = outlineLine(cur)
+            ?: "（剧情大纲中暂无第 $n 章，请根据人物档案与前后文合理撰写本章内容）"
+        val prevLine = if (n == 1)
+            "（本章为第 1 章，无上一章；可在摘要开头适当交代开篇背景）"
+        else
+            outlineLine(outlineChapter(n - 1))
+                ?: "（大纲中暂无第 ${n - 1} 章；请保证与已有前文自然衔接）"
+        return buildString {
+            append("任务：根据「第 $n 章大纲」撰写本章摘要（300~400 字）。\n\n")
+            append("【生成方法】\n")
+            append("1. 以「第 $n 章大纲」为主体：把时间地点、出场人物、核心事件、冲突/看点、结尾钩子扩写成连贯的摘要叙述；\n")
+            append("2. 参考「上一章大纲」保证与前文自然衔接；\n")
+            append("3. 出场人物以大纲「人物」字段为准：其性别、年龄、身份、性格等基本属性取自下方人物档案，双方称谓与关系取自人物关系表，不得张冠李戴；\n")
+            append("4. 摘要文字风格参照文风特征；\n")
+            append("5. 摘要须完整包含：时间地点、出场人物、核心事件、剧情看点/冲突、本章结尾悬念（钩子）。\n\n")
+            append("【文风特征】\n${styleText()}\n\n")
+            append("【人物档案】（本章出场人物）\n$charsMd\n\n")
+            append("【人物关系】（本章相关）\n$relMd\n\n")
+            append("【上一章大纲】（衔接参考）\n$prevLine\n\n")
+            append("【第 $n 章大纲】（摘要主体）\n$curLine\n\n")
+            append("输出格式：第${n}章摘要：<内容>（不要其他说明文字）。")
+        }
+    }
 }
